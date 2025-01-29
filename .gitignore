@@ -174,4 +174,4 @@ cython_debug/
 .pypirc
 /myenv
 .gitignore
-/frontend/node_modules
+tmp
