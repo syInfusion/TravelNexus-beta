@@ -2,44 +2,77 @@
 {% load static %}
 
 {% block content %}
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="w-full max-w-md p-8 space-y-6 bg-white shadow-md rounded-lg">
-        <h2 class="text-2xl font-bold text-center">Login to TravelNexus</h2>
+<div class="flex items-center justify-center min-h-screen bg-neutral-50">
+    <div class="w-full max-w-md p-6 sm:p-8 space-y-6 bg-white shadow-lg rounded-xl mx-4">
+        <!-- Logo and Heading -->
+        <div class="text-center">
+            <img class="h-12 mx-auto" src="{% static 'images/logo.svg' %}" alt="TravelNexus Logo"/>
+            <h2 class="mt-4 text-2xl font-bold text-neutral-800">Login to TravelNexus</h2>
+            <p class="mt-2 text-sm text-neutral-600">Welcome back! Please enter your details.</p>
+        </div>
 
+        <!-- Error Messages -->
         {% if form.non_field_errors %}
-        <div class="p-3 text-red-500 bg-red-100 rounded">
+        <div class="p-3 text-sm text-neutral-600 bg-neutral-100 rounded-lg">
             {{ form.non_field_errors }}
         </div>
         {% endif %}
 
-        <form method="post" action="{% url 'account_login' %}" class="space-y-4">
+        <!-- Login Form -->
+        <form method="post" action="{% url 'account_login' %}" class="space-y-5">
             {% csrf_token %}
             
+            <!-- Email Field -->
             <div>
-                <label for="id_login" class="text-sm font-medium">Email</label>
-                <input type="email" name="login" id="id_login" required class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-indigo-300">
+                <label for="id_login" class="block text-sm font-medium text-neutral-700">Email Address</label>
+                <input
+                    type="email"
+                    name="login"
+                    id="id_login"
+                    placeholder="Enter your email"
+                    required
+                    class="w-full p-3 border border-neutral-300 rounded-lg hover:border-neutral-500 focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                />
             </div>
             
+            <!-- Password Field -->
             <div>
-                <label for="id_password" class="text-sm font-medium">Password</label>
-                <input type="password" name="password" id="id_password" required class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-indigo-300">
+                <label for="id_password" class="block text-sm font-medium text-neutral-700">Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="id_password"
+                    placeholder="Enter your password"
+                    required
+                    class="w-full p-3 border border-neutral-300 rounded-lg hover:border-neutral-500 focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                />
             </div>
             
+            <!-- Remember Me and Forgot Password -->
             <div class="flex items-center justify-between">
                 <label class="flex items-center space-x-2">
-                    <input type="checkbox" name="remember" class="rounded">
-                    <span class="text-sm">Remember me</span>
+                    <input
+                        type="checkbox"
+                        name="remember"
+                        class="w-4 h-4 border-neutral-300 rounded focus:ring-neutral-500"
+                    />
+                    <span class="text-sm text-neutral-600">Remember me</span>
                 </label>
-                <a href="{% url 'account_reset_password' %}" class="text-indigo-600 hover:underline text-sm">Forgot password?</a>
+                <a href="{% url 'account_reset_password' %}" class="text-sm text-neutral-600 hover:text-neutral-800 hover:underline transition-colors">Forgot password?</a>
             </div>
 
-            <button type="submit" class="w-full py-2 text-white bg-indigo-600 rounded-lg hover:bg-indigo-700">
+            <!-- Login Button -->
+            <button
+                type="submit"
+                class="w-full bg-neutral-800 text-white py-3 rounded-lg hover:bg-neutral-900 focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 transition-all"
+            >
                 Login
             </button>
         </form>
 
-        <p class="text-sm text-center">Don't have an account? 
-            <a href="{% url 'account_signup' %}" class="text-indigo-600 hover:underline">Sign up</a>
+        <!-- Sign Up Link -->
+        <p class="text-sm text-center text-neutral-600">Don't have an account? 
+            <a href="{% url 'account_signup' %}" class="font-medium text-neutral-800 hover:text-neutral-900 hover:underline transition-colors">Sign up</a>
         </p>
     </div>
 </div>
