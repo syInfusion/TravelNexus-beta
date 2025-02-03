@@ -1,0 +1,79 @@
+{% extends "layouts/blank.html" %}
+{% load static %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-neutral-50">
+    <div class="w-full max-w-md p-6 sm:p-8 space-y-6 bg-white shadow-lg rounded-xl mx-4">
+        <!-- Logo and Heading -->
+        <div class="text-center">
+            <img class="h-12 mx-auto" src="{% static 'images/logo.svg' %}" alt="TravelNexus Logo"/>
+            <h2 class="mt-4 text-2xl font-bold text-neutral-800">Login to TravelNexus</h2>
+            <p class="mt-2 text-sm text-neutral-600">Welcome back! Please enter your details.</p>
+        </div>
+
+        <!-- Error Messages -->
+        {% if form.non_field_errors %}
+        <div class="p-3 text-sm text-neutral-600 bg-neutral-100 rounded-lg">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <!-- Login Form -->
+        <form method="post" action="{% url 'account_login' %}" class="space-y-5">
+            {% csrf_token %}
+            
+            <!-- Email Field -->
+            <div>
+                <label for="id_login" class="block text-sm font-medium text-neutral-700">Email Address</label>
+                <input
+                    type="email"
+                    name="login"
+                    id="id_login"
+                    placeholder="Enter your email"
+                    required
+                    class="w-full p-3 border border-neutral-300 rounded-lg hover:border-neutral-500 focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                />
+            </div>
+            
+            <!-- Password Field -->
+            <div>
+                <label for="id_password" class="block text-sm font-medium text-neutral-700">Password</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="id_password"
+                    placeholder="Enter your password"
+                    required
+                    class="w-full p-3 border border-neutral-300 rounded-lg hover:border-neutral-500 focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                />
+            </div>
+            
+            <!-- Remember Me and Forgot Password -->
+            <div class="flex items-center justify-between">
+                <label class="flex items-center space-x-2">
+                    <input
+                        type="checkbox"
+                        name="remember"
+                        class="w-4 h-4 border-neutral-300 rounded focus:ring-neutral-500"
+                    />
+                    <span class="text-sm text-neutral-600">Remember me</span>
+                </label>
+                <a href="{% url 'account_reset_password' %}" class="text-sm text-neutral-600 hover:text-neutral-800 hover:underline transition-colors">Forgot password?</a>
+            </div>
+
+            <!-- Login Button -->
+            <button
+                type="submit"
+                class="w-full bg-neutral-800 text-white py-3 rounded-lg hover:bg-neutral-900 focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 transition-all"
+            >
+                Login
+            </button>
+        </form>
+
+        <!-- Sign Up Link -->
+        <p class="text-sm text-center text-neutral-600">Don't have an account? 
+            <a href="{% url 'account_signup' %}" class="font-medium text-neutral-800 hover:text-neutral-900 hover:underline transition-colors">Sign up</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
