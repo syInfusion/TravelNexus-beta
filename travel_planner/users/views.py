@@ -8,3 +8,4 @@ def home(request):
     """Returns the base template."""
 
     return render(request, 'home/home.html')
+
