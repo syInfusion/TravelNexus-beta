@@ -1,0 +1,64 @@
+{% extends "layouts/blank.html" %}
+
+{% block content %}
+<div class="bg-gray-100 min-h-screen">
+
+    <section class="relative bg-cover bg-center h-[400px]" style="background-image: url('/static/images/luxury-beach.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center">
+            <div class="text-white">
+                <h1 class="text-4xl font-bold">Luxurious Beach</h1>
+                <p class="text-lg">Uncover Unique Travel</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="container mx-auto p-6 flex flex-wrap justify-center gap-4">
+        <select class="px-4 py-2 border rounded bg-white shadow">
+            <option>Budget</option>
+        </select>
+        <select class="px-4 py-2 border rounded bg-white shadow">
+            <option>Number of People</option>
+        </select>
+        <select class="px-4 py-2 border rounded bg-white shadow">
+            <option>Preferences</option>
+        </select>
+        <select class="px-4 py-2 border rounded bg-white shadow">
+            <option>Activities</option>
+        </select>
+        <select class="px-4 py-2 border rounded bg-white shadow">
+            <option>Dining Options</option>
+        </select>
+    </div>
+
+    <!-- Personalized Destinations -->
+    <section class="container mx-auto p-6">
+        <h2 class="text-2xl font-bold mb-4">Personalized Recommendations</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            {% for destination in destinations %}
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="{{ destination.image_url }}" alt="{{ destination.name }}" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">{{ destination.name }}</h3>
+                    <p class="text-sm text-gray-600">{{ destination.description }}</p>
+                    <p class="text-lg font-semibold mt-2 text-[#ff2525]">From €{{ destination.price }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="bg-[#ed1516] text-white py-10 text-center">
+        <h2 class="text-2xl font-bold">Subscribe for Updates</h2>
+        <p>Be the first to know about new experiences!</p>
+        <div class="mt-4">
+            <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded text-black">
+            <button class="bg-white text-[#ed1516] px-6 py-2 rounded font-bold">Join Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+</div>
+{% endblock %}
