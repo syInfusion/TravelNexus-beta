@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'itinerary',
     'users',
+    'rest_framework',
 ]
 
 AUTHENTICATION_BACKENDS = [
