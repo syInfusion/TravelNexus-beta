@@ -12,7 +12,11 @@
     <ul class="navitems flex items-center justify-center h-full space-x-6">
       {% if request.user.is_authenticated %}
       <li>
-        <a href="/" class="hover:text-blue-600 transition duration-300">Home</a>
+        <a
+          href="{% url 'home' %}"
+          class="hover:text-blue-600 transition duration-300"
+          >Home</a
+        >
       </li>
 
       <li x-data="{ dropdownOpen: false }" class="relative">
@@ -46,6 +50,13 @@
                 href="{% url 'profile-setup' %}"
                 class="hover:text-blue-600 transition duration-300"
                 >Profile Setup</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'my-itinerary' %}"
+                class="hover:text-blue-600 transition duration-300"
+                >My Itinerary</a
               >
             </li>
             <li>
