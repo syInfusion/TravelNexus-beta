@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Itinerary
 from users.models import Profile
 from .utils.weather import get_weather
-from .utils.recommendations import generate_itinerary, generate_recommendations
+from .utils.recommendations import generate_recommendations
 
 @login_required
 def home(request):
