@@ -5,10 +5,13 @@ from django.templatetags.static import static
 
 class Profile(models.Model):
     """Defines user profile class"""
-    user =  models.OneToOneField(User, on_delete=models.CASCADE)
-    username =  models.CharField(max_length=12, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=12, null=True, blank=True)
     user_pic = models.ImageField(upload_to="avatars/", null=True, blank=True)
     info = models.TextField(null=True, blank=True, max_length=100)
+    bio = models.TextField(null=True, blank=True)  # Add bio field
+    budget = models.CharField(max_length=20, null=True, blank=True)  # Add budget field
+    travel_preferences = models.TextField(null=True, blank=True)  # Add travel preferences field
     
 
     def __str__(self):
