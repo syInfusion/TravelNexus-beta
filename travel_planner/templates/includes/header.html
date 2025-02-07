@@ -1,44 +1,101 @@
 {% load static %}
-<header class="flex items-center justify-between bg-white h-20 px-8 text-gray-800 sticky top-0 z-40 shadow-sm">
-    <div>
-        <a class="flex items-center gap-2" href="/">
-            <img class="h-8" src="{% static 'images/logo.svg' %}" alt="Logo"/>
-            <span class="text-xl font-bold text-gray-800">TravelNexus</span>
+<header
+  class="flex items-center justify-between bg-white h-20 px-8 text-gray-800 sticky top-0 z-40 shadow-sm"
+>
+  <div>
+    <a class="flex items-center gap-2" href="/">
+      <img class="h-8" src="{% static 'images/logo.svg' %}" alt="Logo" />
+      <span class="text-xl font-bold text-gray-800">TravelNexus</span>
+    </a>
+  </div>
+  <nav class="block bg-white relative">
+    <ul class="navitems flex items-center justify-center h-full space-x-6">
+      {% if request.user.is_authenticated %}
+      <li>
+        <a
+          href="{% url 'home' %}"
+          class="hover:text-blue-600 transition duration-300"
+          >Home</a
+        >
+      </li>
+
+      <li x-data="{ dropdownOpen: false }" class="relative">
+        <a
+          @click="dropdownOpen = !dropdownOpen"
+          @click.away="dropdownOpen = false"
+          class="cursor-pointer select-none flex items-center gap-2"
+        >
+          <img
+            class="h-8 w-8 rounded-full object-cover"
+            src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'images/avatar.svg' %}{% endif %}"
+          />
+          <span class="text-gray-800">{{ user.profile.name }}</span>
+          <img
+            x-bind:class="dropdownOpen && 'rotate-180 duration-300'"
+            class="w-4 transition-transform"
+            src="https://img.icons8.com/small/32/777777/expand-arrow.png"
+          />
         </a>
-    </div>
-    <nav class="block bg-white relative">
-        <ul class="navitems flex items-center justify-center h-full space-x-6">
-            {% if request.user.is_authenticated %}
-            <li><a href="/" class="hover:text-blue-600 transition duration-300">Home</a></li>
-            
-            <li x-data="{ dropdownOpen: false }" class="relative">
-                <a @click="dropdownOpen = !dropdownOpen" @click.away="dropdownOpen = false" class="cursor-pointer select-none flex items-center gap-2">
-                    <img class="h-8 w-8 rounded-full object-cover" src="{{ user.profile.avatar }}"/>
-                    <span class="text-gray-800">{{ user.profile.name }}</span>
-                    <img x-bind:class="dropdownOpen && 'rotate-180 duration-300'" class="w-4 transition-transform" src="https://img.icons8.com/small/32/777777/expand-arrow.png"/>
-                </a>
-                <div x-show="dropdownOpen" x-cloak class="absolute right-0 bg-white text-gray-800 shadow-lg rounded-lg w-48 p-2 z-20 mt-2"
-                x-transition:enter="duration-300 ease-out"
-                x-transition:enter-start="opacity-0 -translate-y-5 scale-90"
-                x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                >
-                    <ul class="hoverlist [&>li>a]:justify-end space-y-2">
-                        <li><a href="" class="hover:text-blue-600 transition duration-300">My Profile</a></li>
-                        <li><a href="" class="hover:text-blue-600 transition duration-300">Edit Profile</a></li>
-                        <li><a href="" class="hover:text-blue-600 transition duration-300">Settings</a></li>
-                        <li><a href="{% url 'account_logout' %}" class="hover:text-blue-600 transition duration-300">Log Out</a></li>
-                    </ul>
-                </div>
+        <div
+          x-show="dropdownOpen"
+          x-cloak
+          class="absolute right-0 bg-white text-gray-800 shadow-lg rounded-lg w-48 p-2 z-20 mt-2"
+          x-transition:enter="duration-300 ease-out"
+          x-transition:enter-start="opacity-0 -translate-y-5 scale-90"
+          x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+        >
+          <ul class="hoverlist [&>li>a]:justify-end space-y-2">
+            <li>
+              <a
+                href="{% url 'profile-setup' %}"
+                class="hover:text-blue-600 transition duration-300"
+                >Profile Setup</a
+              >
             </li>
-            
-            {% else %}
-                <li>
-                    <a href="{% url 'account_login' %}" class="hover:text-blue-600 transition duration-300">Login</a>
-                </li>
-                <li>
-                    <a href="{% url 'account_signup' %}" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Signup</a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
+            <li>
+              <a
+                href="{% url 'my-itinerary' %}"
+                class="hover:text-blue-600 transition duration-300"
+                >My Itinerary</a
+              >
+            </li>
+            <li>
+              <a href="" class="hover:text-blue-600 transition duration-300"
+                >My Profile</a
+              >
+            </li>
+            <li>
+              <a href="" class="hover:text-blue-600 transition duration-300"
+                >Settings</a
+              >
+            </li>
+            <li>
+              <a
+                href="{% url 'account_logout' %}"
+                class="hover:text-blue-600 transition duration-300"
+                >Log Out</a
+              >
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      {% else %}
+      <li>
+        <a
+          href="{% url 'account_login' %}"
+          class="hover:text-blue-600 transition duration-300"
+          >Login</a
+        >
+      </li>
+      <li>
+        <a
+          href="{% url 'account_signup' %}"
+          class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+          >Signup</a
+        >
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
 </header>

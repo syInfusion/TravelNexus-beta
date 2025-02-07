@@ -1,0 +1,128 @@
+{% extends "layouts/blank.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-cover bg-center h-[600px] flex items-center justify-center text-center"
+    style="background-image: url('{{ STATIC_URL }}images/travel-hero.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative z-10 text-white max-w-2xl">
+        <h1 class="text-5xl font-extrabold">Discover Your Next Adventure</h1>
+        <p class="mt-4 text-lg">AI-driven personalized travel planning made easy.</p>
+        <div class="mt-6 space-x-4">
+            <a href="{% url 'account_signup' %}" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg text-lg">
+                Get Started
+            </a>
+            <a href="{% url 'account_login' %}" class="border border-white px-6 py-3 rounded-lg text-lg">
+                Log In
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-800">How It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <img src="{% static 'images/icon1.png' %}" class="w-16 mx-auto mb-4" alt="Signup">
+                <h3 class="text-xl font-semibold">1. Sign Up</h3>
+                <p class="text-gray-600 mt-2">Create a free account to get personalized recommendations.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <img src="{% static 'images/icon2.png' %}" class="w-16 mx-auto mb-4" alt="Customize">
+                <h3 class="text-xl font-semibold">2. Customize</h3>
+                <p class="text-gray-600 mt-2">Set your travel preferences and budget.</p>
+            </div>
+            <div class="p-6 bg-white shadow-lg rounded-lg">
+                <img src="{% static 'images/icon3.png' %}" class="w-16 mx-auto mb-4" alt="Explore">
+                <h3 class="text-xl font-semibold">3. Explore</h3>
+                <p class="text-gray-600 mt-2">Discover AI-generated itineraries tailored for you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-800">Why Choose TravelNexus?</h2>
+        <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-red-600">🌍 AI-Powered Travel</h3>
+                <p class="text-gray-600 mt-2">Get personalized recommendations based on your interests.</p>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-red-600">📍 Real-Time Updates</h3>
+                <p class="text-gray-600 mt-2">Receive real-time weather and event notifications.</p>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-red-600">💸 Budget-Friendly</h3>
+                <p class="text-gray-600 mt-2">Find the best deals based on your set budget.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Destinations -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-800">Top Destinations</h2>
+        <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="{% static 'images/paris.jpg' %}" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Paris, France</h3>
+                    <p class="text-sm text-gray-600">Explore the city of love with our AI-curated plans.</p>
+                </div>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="{% static 'images/bali.jpg' %}" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">Bali, Indonesia</h3>
+                    <p class="text-sm text-gray-600">Discover tropical paradise tailored to your preferences.</p>
+                </div>
+            </div>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="{% static 'images/nyc.jpg' %}" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold">New York City, USA</h3>
+                    <p class="text-sm text-gray-600">Experience the big apple like never before.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-800">What Our Users Say</h2>
+        <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <div class="p-6 bg-gray-50 rounded-lg shadow-lg">
+                <p class="text-gray-600">"TravelNexus completely changed how I travel. Highly recommend!"</p>
+                <h4 class="mt-4 text-lg font-semibold">- John Doe</h4>
+            </div>
+            <div class="p-6 bg-gray-50 rounded-lg shadow-lg">
+                <p class="text-gray-600">"I love the AI-powered suggestions. Makes planning trips so easy!"</p>
+                <h4 class="mt-4 text-lg font-semibold">- Sarah Kim</h4>
+            </div>
+            <div class="p-6 bg-gray-50 rounded-lg shadow-lg">
+                <p class="text-gray-600">"Super intuitive and budget-friendly options. A must-have tool!"</p>
+                <h4 class="mt-4 text-lg font-semibold">- Alex Wong</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="bg-red-600 text-white py-16 text-center">
+    <h2 class="text-3xl font-bold">Start Your Journey Today</h2>
+    <p class="mt-2 text-lg">Join TravelNexus and plan your next dream vacation effortlessly.</p>
+    <div class="mt-6">
+        <a href="{% url 'account_signup' %}" class="bg-white text-red-600 px-6 py-3 rounded-lg font-bold">Sign Up Now</a>
+    </div>
+</section>
+
+{% endblock %}
