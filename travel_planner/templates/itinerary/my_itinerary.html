@@ -1,0 +1,23 @@
+{% extends "layouts/box.html" %}
+{% block content %}
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-4">Your Personalized Itinerary</h1>
+
+    <div class="bg-white p-4 rounded shadow-md">
+        <h2 class="text-xl font-semibold">Destination: {{ itinerary.destination }}</h2>
+        <p><strong>Start Date:</strong> {{ itinerary.start_date }}</p>
+        <p><strong>Budget:</strong> {{ itinerary.budget }}</p>
+
+        <h3 class="mt-4 text-lg font-semibold">Weather Conditions</h3>
+        <p>🌡️ Temperature: {{ weather.temperature }}°C</p>
+        <p>🌤️ Conditions: {{ weather.weather }}</p>
+
+        <h3 class="mt-4 text-lg font-semibold">Recommended Activities</h3>
+        <ul class="list-disc ml-5">
+            {% for activity in recommendations %}
+            <li>{{ activity }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
