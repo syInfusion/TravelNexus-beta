@@ -6,6 +6,14 @@ from .serializer import ProfileSerializer
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
+
+
+def landing_page(request):
+    """Landing page for unauthenticated users. Redirects authenticated users to home."""
+    if request.user.is_authenticated:
+        return redirect('home')  # Redirects authenticated users to their dashboard
+    return render(request, 'home.html')  # Unauthenticated users see the landing page
+
 class ProfileDetailView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
