@@ -30,13 +30,16 @@ def profile_setup(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
 
     if request.method == "POST":
-        # Save profile details from form submission
         profile.bio = request.POST.get('bio', '')
         profile.budget = request.POST.get('budget', 'medium')
-        profile.travel_preferences = request.POST.get('travel_preferences', '')
+        profile.travel_preferences = request.POST.getlist('travel_preferences', '')
+
+        # ✅ Properly handle profile picture uploads
+        if 'profile_picture' in request.FILES:
+            profile.profile_picture = request.FILES['profile_picture']
+
         profile.save()
         
-        # Redirect to personalized home page after completion
-        return redirect('home')
+        return redirect('home')  # Redirect after saving
 
     return render(request, 'users/profile_setup.html', {'profile': profile})
