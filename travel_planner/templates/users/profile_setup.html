@@ -1,0 +1,59 @@
+{% extends "layouts/blank.html" %}
+{% load static %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-neutral-50">
+    <div class="w-full max-w-md p-6 sm:p-8 space-y-6 bg-white shadow-lg rounded-xl mx-4">
+        <h2 class="text-2xl font-bold text-neutral-800">Profile Setup</h2>
+        <p class="text-sm text-neutral-600">Please complete your profile to get started.</p>
+
+        <form method="post" class="space-y-4">
+            {% csrf_token %}
+            
+            <!-- Bio Field -->
+            <div>
+                <label for="bio" class="block text-sm font-medium text-neutral-700">Bio</label>
+                <textarea
+                    id="bio"
+                    name="bio"
+                    class="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                    placeholder="Tell us about yourself..."
+                >{{ profile.bio }}</textarea>
+            </div>
+
+            <!-- Budget Field -->
+            <div>
+                <label for="budget" class="block text-sm font-medium text-neutral-700">Budget</label>
+                <select
+                    id="budget"
+                    name="budget"
+                    class="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                >
+                    <option value="low" {% if profile.budget == "low" %}selected{% endif %}>Low</option>
+                    <option value="medium" {% if profile.budget == "medium" %}selected{% endif %}>Medium</option>
+                    <option value="high" {% if profile.budget == "high" %}selected{% endif %}>High</option>
+                </select>
+            </div>
+
+            <!-- Travel Preferences Field -->
+            <div>
+                <label for="travel_preferences" class="block text-sm font-medium text-neutral-700">Travel Preferences</label>
+                <textarea
+                    id="travel_preferences"
+                    name="travel_preferences"
+                    class="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                    placeholder="What are your travel preferences?"
+                >{{ profile.travel_preferences }}</textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+                type="submit"
+                class="w-full bg-neutral-800 text-white py-3 rounded-lg hover:bg-neutral-900 focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 transition-all"
+            >
+                Save Profile
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
