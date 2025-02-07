@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Itinerary
-from .utils.recommendations import generate_itinerary
-from datetime import date, timedelta
-from django.utils import timezone 
+from users.models import Profile
+from .utils.weather import get_weather
+from .utils.recommendations import generate_itinerary, generate_recommendations
 
 @login_required
 def home(request):
@@ -21,14 +21,27 @@ def profile(request):
 
 @login_required
 def itinerary_view(request):
-    """Ensure a user has only one itinerary and fetch it."""
-    itinerary, created = Itinerary.objects.get_or_create(user=request.user, defaults={
-        "start_date": timezone.now().date(),  # Set a default start date
-        "end_date": timezone.now().date(),
+    """Generates or fetches the user’s personalized itinerary."""
+    
+    # Get user profile
+    user_profile = Profile.objects.get(user=request.user)
+
+    # Fetch or create itinerary
+    itinerary, created = Itinerary.objects.get_or_create(user=request.user)
+
+    # Fetch weather data
+    weather_data = get_weather(itinerary.destination)
+
+    # Generate AI-powered recommendations
+    recommendations = generate_recommendations(user_profile, weather_data)
+
+    # Update itinerary with recommendations and weather
+    itinerary.weather_conditions = weather_data
+    itinerary.recommendations = recommendations
+    itinerary.save()
+
+    return render(request, "itinerary/my_itinerary.html", {
+        "itinerary": itinerary,
+        "weather": weather_data,
+        "recommendations": recommendations
     })
-
-    # If multiple itineraries exist, get the most recent one
-    if not created:
-        itinerary = Itinerary.objects.filter(user=request.user).latest("created_at")
-
-    return render(request, "itinerary/itinerary.html", {"itinerary": itinerary})
