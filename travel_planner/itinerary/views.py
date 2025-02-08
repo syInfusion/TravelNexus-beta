@@ -53,7 +53,7 @@ def itinerary_view(request):
         weather_data = {"temperature": "N/A", "condition": "N/A"}  # Fixed key
 
     # Generate recommendations for activities in the city
-    recommended_activities = generate_recommendations(city, weather_data)
+    recommended_activities = generate_recommendations(user.profile, weather_data)
     print("Recommended Activities:", recommended_activities)
 
     # Create or update the user's itinerary
