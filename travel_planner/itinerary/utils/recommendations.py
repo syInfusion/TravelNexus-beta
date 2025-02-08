@@ -21,7 +21,15 @@ def generate_recommendations(user_profile, weather_data):
     else:
         preferred_activities = activity_options["adventure"] + activity_options["city"]
 
-    # Personalize further based on user preferences
+    # Ensure user_profile is an object, not a string
+    if isinstance(user_profile, str):  
+        from users.models import Profile  # Adjust import as needed
+
+        try:
+            user_profile = Profile.objects.get(user__username=user_profile)
+        except Profile.DoesNotExist:
+            return []  # Handle missing profile properly
+
     user_prefs = user_profile.travel_preferences  # e.g., ["adventure", "food"]
     recommended = []
 
