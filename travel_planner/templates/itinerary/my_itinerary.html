@@ -14,8 +14,10 @@
 
         <h3 class="mt-4 text-lg font-semibold">Recommended Activities</h3>
         <ul class="list-disc ml-5">
-            {% for activity in recommendations %}
+            {% for activity in recommended_activities %}
             <li>{{ activity }}</li>
+            {% empty %}
+            <li>No activities available.</li>
             {% endfor %}
         </ul>
     </div>
