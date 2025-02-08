@@ -14,7 +14,7 @@ class Itinerary(models.Model):
         default='medium'
     )
     activities = models.JSONField(default=list)  # Stores a list of activities
-    weather_conditions = models.JSONField(default=dict)  # Stores weather data
+    weather_conditions = models.JSONField(default=dict, blank=True, null=True)  # Stores weather data
     recommendations = models.JSONField(default=dict)  # Stores AI-generated recommendations
 
     def __str__(self):
