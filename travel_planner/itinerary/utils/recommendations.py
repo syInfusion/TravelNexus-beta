@@ -12,19 +12,17 @@ def generate_recommendations(user_profile, weather_data):
         "food": ["Street Food Tour", "Fine Dining Experience", "Cooking Class"],
         "city": ["Museum Tour", "Shopping", "Nightlife"]
     }
-    
+
     # Determine recommended category based on weather
-    if weather_data and weather_data["temperature"] > 25:
+    if weather_data and float(weather_data.get("temperature", 0)) > 25:
         preferred_activities = activity_options["beach"] + activity_options["food"]
-    elif weather_data and "rain" in weather_data["weather"].lower():
+    elif weather_data and "rain" in weather_data.get("condition", "").lower():
         preferred_activities = activity_options["city"]
     else:
         preferred_activities = activity_options["adventure"] + activity_options["city"]
 
     # Ensure user_profile is an object, not a string
-    if isinstance(user_profile, str):  
-        from users.models import Profile  # Adjust import as needed
-
+    if isinstance(user_profile, str):
         try:
             user_profile = Profile.objects.get(user__username=user_profile)
         except Profile.DoesNotExist:
