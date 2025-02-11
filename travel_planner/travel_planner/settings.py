@@ -11,7 +11,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Use environment variables
+API_KEY = os.getenv("API_KEY")
+BASE_URL = os.getenv("BASE_URL")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,8 +35,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 # Application definition
+ACCOUNT_ADAPTER = 'users.adapters.MyAccountAdapter'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,6 +60,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'itinerary',
     'users',
+    'rest_framework',
+    'fontawesomefree',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -64,6 +83,7 @@ MIDDLEWARE = [
 
     # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
+    'users.middleware.ProfileCompletionMiddleware', 
 ]
 
 ROOT_URLCONF = 'travel_planner.urls'
@@ -76,13 +96,24 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github' : {
+        'APP': {
+            'client_id': 'Ov23liGlzaOvY6hJKDHG',
+            'secret': 'b20bba20e77a59385c467df6b678ab556d48c781',
+            'key': ''
+        }
+    }
+}
 
 WSGI_APPLICATION = 'travel_planner.wsgi.application'
 
@@ -133,11 +164,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR /  'static',]
 
 
@@ -147,7 +178,9 @@ STATICFILES_DIRS = [BASE_DIR /  'static',]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/home'
+LOGIN_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_EMAIL_REQUIRED = True

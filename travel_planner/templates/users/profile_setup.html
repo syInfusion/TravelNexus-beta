@@ -1,0 +1,80 @@
+{% extends "layouts/blank.html" %}
+{% load static %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-neutral-50">
+    <div class="w-full max-w-md p-6 sm:p-8 space-y-6 bg-white shadow-lg rounded-xl mx-4">
+        <h2 class="text-2xl font-bold text-neutral-800">Profile Setup</h2>
+        <p class="text-sm text-neutral-600">Please complete your profile to get started.</p>
+
+        <form method="post" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+            
+            <!-- Profile Picture Upload -->
+            <div>
+                <label for="profile_picture" class="block text-sm font-medium text-neutral-700">Profile Picture</label>
+                <input
+                    type="file"
+                    id="profile_picture"
+                    name="profile_picture"
+                    class="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2"
+                >
+                <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded">Save Profile</button>
+                {% if profile.profile_picture %}
+                <img src="{% if profile.profile_picture %}{{ profile.profile_picture.url }}{% else %}{% static 'images/avatar.svg' %}{% endif %}" 
+                class="mt-2 w-20 h-20 rounded-full object-cover">                {% endif %}
+            </div>
+
+            <!-- Bio Field -->
+            <div>
+                <label for="bio" class="block text-sm font-medium text-neutral-700">Bio</label>
+                <textarea
+                    id="bio"
+                    name="bio"
+                    class="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                    placeholder="Tell us about yourself..."
+                >{{ profile.bio }}</textarea>
+            </div>
+
+            <!-- Budget Field -->
+            <div>
+                <label for="budget" class="block text-sm font-medium text-neutral-700">Budget</label>
+                <select
+                    id="budget"
+                    name="budget"
+                    class="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                >
+                    <option value="low" {% if profile.budget == "low" %}selected{% endif %}>Low</option>
+                    <option value="medium" {% if profile.budget == "medium" %}selected{% endif %}>Medium</option>
+                    <option value="high" {% if profile.budget == "high" %}selected{% endif %}>High</option>
+                </select>
+            </div>
+
+            <!-- Travel Preferences (Multi-select) -->
+            <div>
+                <label for="travel_preferences" class="block text-sm font-medium text-neutral-700">Travel Preferences</label>
+                <select
+                    id="travel_preferences"
+                    name="travel_preferences"
+                    multiple
+                    class="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-neutral-500 focus:border-neutral-500 transition-all"
+                >
+                    <option value="beach" {% if "beach" in profile.travel_preferences %}selected{% endif %}>Beach</option>
+                    <option value="mountain" {% if "mountain" in profile.travel_preferences %}selected{% endif %}>Mountain</option>
+                    <option value="city" {% if "city" in profile.travel_preferences %}selected{% endif %}>City</option>
+                    <option value="historical" {% if "historical" in profile.travel_preferences %}selected{% endif %}>Historical</option>
+                    <option value="adventure" {% if "adventure" in profile.travel_preferences %}selected{% endif %}>Adventure</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+                type="submit"
+                class="w-full bg-neutral-800 text-white py-3 rounded-lg hover:bg-neutral-900 focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 transition-all"
+            >
+                Save Profile
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

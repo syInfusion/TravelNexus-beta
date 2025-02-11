@@ -1,36 +1,62 @@
 {% load static %}
-<footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-8">
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            <!-- Logo and Brand Name -->
-            <div class="flex items-center space-x-4">
-                <img class="h-8" src="{% static 'images/logo.svg' %}" alt="Logo"/>
-                <span class="text-xl font-bold">TravelNexus</span>
-            </div>
 
-            <!-- Quick Links -->
-            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-                <a href="/" class="hover:text-blue-400 transition duration-300">Home</a>
-                <a href="{% url 'account_login' %}" class="hover:text-blue-400 transition duration-300">Login</a>
-                <a href="{% url 'account_signup' %}" class="hover:text-blue-400 transition duration-300">Sign Up</a>
-                <a href="#" class="hover:text-blue-400 transition duration-300">Contact Us</a>
-            </div>
+<footer class="bg-gray-900 text-white p-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12">
+        <!-- Branding -->
+        <div>
+            <h3 class="text-lg font-bold">Travel Nexus 🌎</h3>
+            <p class="text-sm text-gray-400">Personalized Travel, Just for You.</p>
         </div>
 
-        <!-- Divider and Contact Info -->
-        <div class="border-t border-gray-700 mt-6 pt-6 text-center md:text-left">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <!-- Contact Information -->
-                <div class="text-gray-400">
-                    <p>Email: support@travelnexus.com</p>
-                    <p>Phone: +1 234 567 890</p>
-                </div>
+        <div>
 
-                <!-- Copyright Notice -->
-                <div class="text-gray-400">
-                    <p>&copy; 2023 TravelNexus. All rights reserved.</p>
-                </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div >
+            <h4 class="font-semibold ">Quick Links</h4>
+            <ul class="text-sm text-gray-400 space-y-3">
+                <li><a href="/" class="hover:underline">Home</a></li>
+                <li><a href="" class="hover:underline">How It Works</a></li>
+                <li><a href="" class="hover:underline">Explore Destinations</a></li>
+                <li><a href="" class="hover:underline">Plan Your Trip</a></li>
+                <li><a href="" class="hover:underline">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+            <h4 class="font-semibold ">Contact Us</h4>
+            <p class="text-sm text-gray-400"><i class="fa-solid fa-location-dot"></i> Nairobi, Kenya</p>
+            <p class="text-sm text-gray-400"><i class="fa-solid fa-envelope"></i> syinfusion@gmail.com</p>
+            <p class="text-sm text-gray-400"><i class="fa-solid fa-phone"></i> +(254) 00000000</p>
+        </div>
+
+        <!-- Newsletter & Socials -->
+        <div>
+            <h4 class="font-semibold mb-3 p-4">Stay Updated</h4>
+            
+            <div class="flex space-x-3 mt-4 text-2xl">
+                <a href="#" class="hover:text-gray-400"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="hover:text-blue-400"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="hover:text-pink-500"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-pink-500"><i class="fa-brands fa-tiktok"></i></a>
             </div>
+        </div>
+    </div>
+
+    <hr class="my-6 max-w-6xl mx-auto border-gray-700">
+
+    <div class="max-w-6xl mx-auto text-sm text-gray-400 text-center md:flex md:justify-between">
+        <div>
+            <a href="" class="hover:underline">About Us</a>
+            <span class="mx-2">|</span>
+            <a href="" class="hover:underline">Privacy Policy</a>
+            <span class="mx-2">|</span>
+            <a href="" class="hover:underline">Terms of Service</a>
+        </div>
+        <div class="text-center text-xs mt-4 md:mt-0">
+            © 2025 Travel Nexus. All rights reserved.
         </div>
     </div>
 </footer>
