@@ -50,7 +50,7 @@ def itinerary_view(request):
 
     # Ensure weather_data is never None
     if not weather_data or "error" in weather_data:
-        weather_data = {"temperature": "N/A", "condition": "N/A"}  # Fixed key
+        weather_data = {"temperature": "N/A", "condition": "N/A"}
 
     # Generate recommendations for activities in the city
     recommended_activities = generate_recommendations(user.profile, weather_data)
