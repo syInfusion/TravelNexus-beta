@@ -38,3 +38,4 @@ def generate_recommendations(user_profile, weather_data):
     # Shuffle and return top 3 recommendations
     random.shuffle(recommended)
     return recommended[:3] if recommended else preferred_activities[:3]
+    
