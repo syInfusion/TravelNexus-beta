@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Itinerary
+from django.contrib import messages
+from django.utils.dateparse import parse_date
+import datetime
 from users.models import Profile
 from .utils.weather import get_weather_data
 from .utils.recommendations import generate_recommendations
@@ -73,3 +76,32 @@ def itinerary_view(request):
         "recommended_activities": recommended_activities
     })
     
+@login_required
+def edit_itinerary_view(request):
+    """Allow users to edit their itinerary"""
+    user = request.user
+    itinerary = Itinerary.objects.get(user=user)
+
+    if request.method == "POST":
+        destination = request.POST.get("destination")
+        start_date = parse_date(request.POST.get("start_date"))
+        end_date = parse_date(request.POST.get("end_date"))
+        budget = request.POST.get("budget")
+        activities = request.POST.getlist("activities")  # Get multiple activities
+        
+        # 🛑 **Validation: Prevent end date before start date**
+        if end_date and start_date and end_date < start_date:
+            messages.error(request, "End date cannot be before the start date.")
+            return redirect("edit_itinerary")
+
+        # ✅ **Update the itinerary**
+        itinerary.destination = destination
+        itinerary.start_date = start_date
+        itinerary.end_date = end_date
+        itinerary.budget = budget
+        itinerary.activities = activities  # Ensure activities are updated
+        itinerary.save()
+
+        return redirect("itinerary_view")  # Redirect to itinerary page
+
+    return render(request, "itinerary/edit_itinerary.html", {"itinerary": itinerary})   
