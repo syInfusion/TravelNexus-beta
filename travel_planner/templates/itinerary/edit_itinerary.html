@@ -1,0 +1,94 @@
+{% extends "layouts/box.html" %}
+{% block content %}
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-4">Edit Your Itinerary</h1>
+
+    <!-- Display messages -->
+    {% if messages %}
+        {% for message in messages %}
+        <p class="text-red-500">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Destination Input -->
+        <label for="destination" class="block font-medium">Destination:</label>
+        <input type="text" id="destination" name="destination" value="{{ itinerary.destination }}"
+               class="border p-2 w-full rounded" required>
+
+        <!-- Start Date Input -->
+        <label for="start_date" class="block font-medium mt-3">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ itinerary.start_date }}"
+               class="border p-2 w-full rounded" required>
+
+        <!-- End Date Input -->
+        <label for="end_date" class="block font-medium mt-3">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ itinerary.end_date }}"
+               class="border p-2 w-full rounded" required>
+
+        <!-- Budget Dropdown -->
+        <label for="budget" class="block font-medium mt-3">Budget:</label>
+        <select name="budget" id="budget" class="border p-2 w-full rounded">
+            <option value="low" {% if itinerary.budget == "low" %}selected{% endif %}>Low</option>
+            <option value="medium" {% if itinerary.budget == "medium" %}selected{% endif %}>Medium</option>
+            <option value="high" {% if itinerary.budget == "high" %}selected{% endif %}>High</option>
+        </select>
+
+
+        <!-- Activities Selection -->
+        <label class="block font-medium mt-3">Select Activities:</label>
+        <div class="grid grid-cols-2 gap-2 mt-2">  
+            <div class="flex items-center">
+                <input type="checkbox" id="safari" name="activities" value="safari"
+                    {% if "safari" in itinerary.activities %}checked{% endif %}
+                    class="mr-2">
+                <label for="safari" class="font-medium">Safari</label>
+            </div>
+
+            <div class="flex items-center">
+                <input type="checkbox" id="hiking" name="activities" value="hiking"
+                    {% if "hiking" in itinerary.activities %}checked{% endif %}
+                    class="mr-2">
+                <label for="hiking" class="font-medium">Hiking</label>
+            </div>
+
+            <div class="flex items-center">
+                <input type="checkbox" id="museum" name="activities" value="museum"
+                    {% if "museum" in itinerary.activities %}checked{% endif %}
+                    class="mr-2">
+                <label for="museum" class="font-medium">Museum Visit</label>
+            </div>
+
+            <div class="flex items-center">
+                <input type="checkbox" id="beach" name="activities" value="beach"
+                    {% if "beach" in itinerary.activities %}checked{% endif %}
+                    class="mr-2">
+                <label for="beach" class="font-medium">Beach</label>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded">
+            Save Changes
+        </button>
+    </form>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let startDateInput = document.getElementById("start_date");
+        let endDateInput = document.getElementById("end_date");
+    
+        // Prevent selecting past dates
+        let today = new Date().toISOString().split("T")[0];
+        startDateInput.setAttribute("min", today);
+        endDateInput.setAttribute("min", today);
+    
+        // Prevent selecting an end date before the start date
+        startDateInput.addEventListener("change", function() {
+            endDateInput.setAttribute("min", startDateInput.value);
+        });
+    });
+    </script>
+{% endblock %}
