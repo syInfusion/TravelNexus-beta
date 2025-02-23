@@ -4,6 +4,7 @@ from .models import Itinerary
 from users.models import Profile
 from .utils.weather import get_weather_data
 from .utils.recommendations import generate_recommendations
+from django.views.generic import View
 
 @login_required
 def home(request):
@@ -72,4 +73,29 @@ def itinerary_view(request):
         "itinerary": itinerary,
         "recommended_activities": recommended_activities
     })
+    
+
+
+class AboutView(View):
+    """Defines the about page view to display info about Travel Planner."""
+    template =  'home/about.html'
+
+    def get(self, request):
+        return render(request, self.template)
+
+
+class ContactView(View):
+    """Defines the contact page view to display contact info for Travel Planner."""
+    template = 'home/contacts.html'
+    
+    def get(self, request):
+        return render(request, self.template)
+    
+
+class ServicesView(View):
+    """Defines the services page view to display services offered by Travel Planner."""
+    template = 'home/services.html'
+    
+    def get(self, request):
+        return render(request, self.template)
     

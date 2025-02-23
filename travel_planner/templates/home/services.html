@@ -1,0 +1,106 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+      <!-- Hero Section -->
+  <section class="bg-cover bg-center py-20" style="background-image: url('https://images.unsplash.com/photo-1509529711801-deac231925ac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDcwfHx0cmF2ZWx8ZW58MHx8MHx8fDA%3D');">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-4xl font-bold text-white mb-4">Your AI-Powered Travel Companion</h1>
+      <p class="text-xl text-gray-200 mb-8">Plan your perfect trip with the help of cutting-edge AI technology.</p>
+      <a href="#" class="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="container mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Service Card 1 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="text-red-500 text-4xl mb-4">✈️</div>
+        <h3 class="text-xl font-bold mb-2">Personalized Itineraries</h3>
+        <p class="text-gray-600">Get custom travel plans tailored to your preferences, budget, and schedule.</p>
+      </div>
+      <!-- Service Card 2 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="text-red-500 text-4xl mb-4">🏨</div>
+        <h3 class="text-xl font-bold mb-2">Smart Accommodation</h3>
+        <p class="text-gray-600">Find the best hotels, resorts, and rentals based on your needs and reviews.</p>
+      </div>
+      <!-- Service Card 3 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="text-red-500 text-4xl mb-4">🍽️</div>
+        <h3 class="text-xl font-bold mb-2">Local Cuisine Guide</h3>
+        <p class="text-gray-600">Discover top-rated restaurants and must-try dishes at your destination.</p>
+      </div>
+      <!-- Service Card 4 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="text-red-500 text-4xl mb-4">🚗</div>
+        <h3 class="text-xl font-bold mb-2">Transportation Made Easy</h3>
+        <p class="text-gray-600">Book flights, trains, and car rentals seamlessly through our platform.</p>
+      </div>
+      <!-- Service Card 5 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="text-red-500 text-4xl mb-4">📅</div>
+        <h3 class="text-xl font-bold mb-2">Real-Time Updates</h3>
+        <p class="text-gray-600">Stay informed with live updates on weather, traffic, and local events.</p>
+      </div>
+      <!-- Service Card 6 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="text-red-500 text-4xl mb-4">🌍</div>
+        <h3 class="text-xl font-bold mb-2">Global Coverage</h3>
+        <p class="text-gray-600">Plan trips to any destination worldwide with our extensive database.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">What Our Users Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <p class="text-gray-600 mb-4">"The AI travel planner made my trip to Japan seamless and stress-free. Highly recommended!"</p>
+          <div class="flex items-center">
+            <img src="https://via.placeholder.com/50" alt="User" class="w-10 h-10 rounded-full mr-4">
+            <div>
+              <p class="font-bold">John Doe</p>
+              <p class="text-sm text-gray-500">Travel Enthusiast</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <p class="text-gray-600 mb-4">"I saved so much time planning my Europe trip. The personalized itinerary was spot on!"</p>
+          <div class="flex items-center">
+            <img src="https://via.placeholder.com/50" alt="User" class="w-10 h-10 rounded-full mr-4">
+            <div>
+              <p class="font-bold">Jane Smith</p>
+              <p class="text-sm text-gray-500">Frequent Traveler</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <p class="text-gray-600 mb-4">"The local cuisine guide helped me discover hidden gems I would have never found on my own."</p>
+          <div class="flex items-center">
+            <img src="https://via.placeholder.com/50" alt="User" class="w-10 h-10 rounded-full mr-4">
+            <div>
+              <p class="font-bold">Mike Johnson</p>
+              <p class="text-sm text-gray-500">Foodie Explorer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call-to-Action Section -->
+  <section class="bg-red-500 py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Ready to Plan Your Next Adventure?</h2>
+      <p class="text-xl text-gray-200 mb-8">Let our AI-powered travel planner take the stress out of trip planning.</p>
+      <a href="#" class="bg-white text-red-500 px-6 py-3 rounded-lg hover:bg-gray-100">Get Started Now</a>
+    </div>
+  </section>
+{% endblock %}

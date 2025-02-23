@@ -3,17 +3,27 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative bg-cover bg-center h-[600px] flex items-center justify-center text-center"
+<section class="relative bg-cover bg-center h-screen flex items-center justify-center text-center px-6"
     style="background-image: url('{% static "images/travel-hero.jpg" %}');">
-    <div class="absolute inset-0 bg-black bg-opacity-40"></div> 
-    <div class="relative z-10 text-white max-w-2xl">
-        <h1 class="text-5xl font-extrabold">Discover Your Next Adventure</h1>
-        <p class="mt-4 text-lg">AI-driven personalized travel planning made easy.</p>
-        <div class="mt-6 space-x-4">
-            <a href="{% url 'account_signup' %}" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg text-lg">
-                Get Started
-            </a>
-            <a href="{% url 'account_login' %}" class="border border-white px-6 py-3 rounded-lg text-lg">
+    
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-white max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-wide animate-fade-in">
+            Discover Your Next Adventure
+        </h1>
+        <p class="mt-4 text-lg md:text-xl font-light animate-fade-in delay-100">
+            AI-driven personalized travel planning made easy.
+        </p>
+
+        <!-- Call to Action Buttons -->
+        <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+            
+            
+            <a href="{% url 'account_login' %}" 
+                class="border border-white text-white px-6 py-3 rounded-lg text-lg transition-all duration-300 hover:bg-white hover:text-gray-900 shadow-lg">
                 Log In
             </a>
         </div>
