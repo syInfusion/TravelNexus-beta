@@ -1,6 +1,130 @@
 {% extends 'layouts/blank.html' %}
 
 {% block content %}
-    <h1>About</h1>
-    <p>This is a travel planner application.</p>
+     <!-- Hero Section -->
+     <section class="bg-cover bg-center py-20 relative" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHJhdmVsJTIwYmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-black/20"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+          <h1 class="text-4xl font-bold text-white mb-4">About Us</h1>
+          <p class="text-xl text-gray-200 mb-8">Discover the story behind our AI-powered travel planner.</p>
+          <a href="#" class="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600">Start Planning</a>
+        </div>
+      </section>
+  <!-- Our Story Section -->
+  <section class="container mx-auto px-6 py-16">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12">Our Story</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Image Section -->
+        <div class="relative group">
+          <img 
+            src="https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+            alt="Our Story" 
+            class="rounded-lg shadow-lg transform group-hover:scale-105 transition-transform duration-300"
+          >
+          <div class="absolute inset-0 bg-gradient-to-r from-black/20 to-black/10 rounded-lg group-hover:opacity-0 transition-opacity duration-300"></div>
+        </div>
+        <!-- Text Section -->
+        <div class="space-y-6">
+          <p class="text-gray-600 text-lg leading-relaxed">
+            At AI Travel Planner, we believe that every journey should be as unique as the traveler. Founded in 2024, our mission is to revolutionize the way people plan their trips by leveraging cutting-edge AI technology. Whether you're a solo adventurer, a family on vacation, or a business traveler, we're here to make your travel experience seamless and unforgettable.
+          </p>
+          <p class="text-gray-600 text-lg leading-relaxed">
+            Our team of travel enthusiasts and tech experts work tirelessly to bring you personalized itineraries, smart recommendations, and real-time updates—all at your fingertips.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Mission and Values Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Mission & Values</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Mission -->
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+          <i class="fas fa-bullseye text-4xl text-red-500 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Mission</h3>
+          <p class="text-gray-600">To empower travelers with intelligent, personalized, and stress-free trip planning.</p>
+        </div>
+        <!-- Values -->
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+          <i class="fas fa-heart text-4xl text-red-500 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Values</h3>
+          <p class="text-gray-600">Innovation, transparency, and a passion for travel drive everything we do.</p>
+        </div>
+        <!-- Vision -->
+        <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+          <i class="fas fa-globe text-4xl text-red-500 mb-4"></i>
+          <h3 class="text-xl font-bold mb-2">Vision</h3>
+          <p class="text-gray-600">To become the world's most trusted AI-powered travel companion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Team Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-12">Meet Our Team</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:-translate-y-2 transition-transform duration-300">
+              <img 
+                src="" 
+                alt="dev" 
+                class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-red-100"
+              >
+              <h3 class="text-2xl font-bold mb-2">John Doe</h3>
+              <p class="text-gray-600 mb-4">CEO & Founder</p>
+              <p class="text-gray-500 mb-6">
+                John is passionate about leveraging AI to transform the travel industry. With over 10 years of experience in tech, he leads our team with vision and innovation.
+              </p>
+              <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-500 hover:text-red-500 transition-colors duration-300">
+                  <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-red-500 transition-colors duration-300">
+                  <i class="fab fa-twitter text-2xl"></i>
+                </a>
+              </div>
+            </div>
+            <!-- Team Member 2 -->
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow transform hover:-translate-y-2 transition-transform duration-300">
+              <img 
+                src="" 
+                alt="dev" 
+                class="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-red-100"
+              >
+              <h3 class="text-2xl font-bold mb-2">Jane Smith</h3>
+              <p class="text-gray-600 mb-4">Lead Developer</p>
+              <p class="text-gray-500 mb-6">
+                Jane is a full-stack developer with a passion for building scalable and user-friendly applications. She ensures our platform runs smoothly and efficiently.
+              </p>
+              <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-500 hover:text-red-500 transition-colors duration-300">
+                  <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-red-500 transition-colors duration-300">
+                  <i class="fab fa-twitter text-2xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+       <!-- Call-to-Action Section -->
+       <section class="bg-red-500 py-16">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl font-bold text-white mb-4">Ready to Plan Your Next Adventure?</h2>
+          <p class="text-xl text-gray-200 mb-8">Let our AI-powered travel planner take the stress out of trip planning.</p>
+          <a href="#" class="bg-white text-red-500 px-6 py-3 rounded-lg hover:bg-gray-100 mr-4">Get Started Now</a>
+          <a href="#" class="bg-transparent border border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-red-500">Learn More</a>
+          <p class="text-gray-200 mt-6">"AI Travel Planner made my trip seamless and unforgettable!" – Happy Customer</p>
+        </div>
+      </section>
+
+
 {% endblock %}
